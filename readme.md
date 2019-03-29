@@ -1,4 +1,9 @@
 # nodeJs restApi
 > node js backend api test
 
-## jwt
+## login auth
+
+```
+passport-jwt
+
+```

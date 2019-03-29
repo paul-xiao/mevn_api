@@ -1,0 +1,15 @@
+{
+  "ignore": ["node_modules", ".git"],
+
+  "__exec": "nodejs-dashboard node server.js",
+
+  "verbose": false,
+
+  "watch": [
+    "server",
+    "config.js",
+    "webpack.*.config.js"
+  ],
+
+  "ext": "js json"
+}
