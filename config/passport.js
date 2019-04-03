@@ -8,7 +8,7 @@ const config = require('./db'); // get db config file
 module.exports = function(passport) {
   const opts = {};
   opts.secretOrKey = config.secret;
-  opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+  opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();  //fromAuthHeaderAsBearerToken bearer
   passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
     User.findOne({id: jwt_payload.id}, function(err, user) {
           if (err) {

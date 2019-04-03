@@ -15,6 +15,7 @@
     "mongoose": "^5.4.17"
   },
   "devDependencies": {
+    "chalk": "^2.4.2",
     "cross-env": "^5.2.0",
     "jwt-simple": "^0.5.5",
     "nodejs-dashboard": "^0.4.3",

@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const chalk = require('chalk');
 
 const app = express();
 const config = require('./config/db');
@@ -22,9 +23,10 @@ require('./config/passport')(passport);
 require('./app/routes/index')(app);
 
 app.get('/', (req, res) => {
-    res.send('hello111')
-    console.log(res)
+    res.send('hello111');
+    console.log(chalk.green('hello world'));
 });
+
 app.listen(PORT, function(){
-    console.log('Your node js server is running on PORT:',PORT);
+    console.log(chalk.green.bgBlack('Your node js server is running on PORT:'),PORT);
 });

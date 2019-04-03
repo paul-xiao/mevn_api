@@ -20,13 +20,11 @@ exports.signUp = (req, res) => {
 //signin
 
 exports.signIn = (req, res) => {
-    console.log(req.body.username)
     User.findOne({
         username: req.body.username
     }, function(err, user) {
         console.log(user)
         if (err) throw err;
-    
         if (!user) {
         res.send({success: false, msg: 'Authentication failed. User not found.'});
         } else {
@@ -36,7 +34,8 @@ exports.signIn = (req, res) => {
             // if user is found and password is right create a token
             var token = jwt.encode(user, config.secret);
             // return the information including token as JSON
-            res.json({success: true, token: 'JWT ' + token});
+            res.json({success: true, token: 'bearer ' + token});
+            console.log(token)
             } else {
             res.send({success: false, msg: 'Authentication failed. Wrong password.'});
             }
@@ -82,3 +81,39 @@ exports.findAll = (req, res) => {
         });
     })
 };
+
+exports.getUser= (req, res) => {
+    var token = getToken(req.headers);
+    console.log(token);
+    if (token) {
+      var decoded = jwt.decode(token, config.secret);
+      console.log(decoded.username);
+      User.findOne({
+        username: decoded.username
+      }, function(err, user) {
+          console.log(user)
+          if (err) throw err;
+   
+          if (!user) {
+            return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
+          } else {
+            res.json({success: true, user: user.username});
+          }
+      });
+    } else {
+      return res.status(403).send({success: false, msg: 'No token provided.'});
+    }
+  };
+   
+  getToken = function (headers) {
+    if (headers && headers.authorization) {
+      var parted = headers.authorization.split(' ');
+      if (parted.length === 2) {
+        return parted[1];
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  };
