@@ -1,4 +1,4 @@
 module.exports = {
     secret:'paultest',
-    DB: 'mongodb://localhost:27017/api'
+    DB: 'mongodb://mongo:27017/api'
 };
