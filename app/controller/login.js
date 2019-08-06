@@ -26,7 +26,7 @@ exports.signIn = (req, res) => {
         console.log(user)
         if (err) throw err;
         if (!user) {
-        res.send({success: false, msg: 'Authentication failed. User not found.'});
+        res.json({success: false, msg: 'Authentication failed. User not found.'});
         } else {
         // check if password matches
         user.comparePassword(req.body.password, function (err, isMatch) {

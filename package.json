@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon --inspect"
+    "dev": "cross-env NODE_ENV=development nodemon --inspect",
+    "start": "docker-compose up"
   },
   "author": "",
   "license": "ISC",

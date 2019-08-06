@@ -11,3 +11,22 @@ passport-jwt
 
 
 ```
+
+
+## get started
+
+```bash
+# start
+docker-compose up/down
+
+# docker deamon
+
+service docker start
+
+# docker log
+
+docker logs -f psId
+
+```
+
+## curl useage

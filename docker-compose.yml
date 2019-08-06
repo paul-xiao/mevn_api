@@ -10,8 +10,21 @@ services:
       - .:/app
     links:
       - mongo
+    networks:
+      paultest:
+        aliases:
+         - app
   mongo:
     container_name: mongo
     image: mongo
+    networks:
+      paultest:
+        aliases:
+         - mongo
     ports:
       - "27017:27017"
+
+
+networks:
+  paultest:
+    external: true
